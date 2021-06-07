@@ -20,8 +20,62 @@
                     value: ['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'),
                     language: 'javascript'
                 });
-				'breakpoint'.match(/breakpoint/);
+                let first = true;
+                editor.changeDecorations((arg) => {
+                	if (first) {
+						'breakpoint'.match(/breakpoint/);
+					} else {
+						'breakpoint'.match(/breakpoint/);
+					}
+                	first = false;
+				})
+                // editor.deltaDecorations([], [{range: null, options: null}])
+                // editor.getLineDecorations()
+                // editor.onDidChangeModelDecorations()
+                // editor.removeDecorations()
+				setTimeout(() => {
+					editor.setDecorations('key0', [{
+						range: {
+							startLineNumber: 1,
+							startColumn: 1,
+							endLineNumber: 1,
+							endColumn: 2
+						},
+						hoverMessage: [{value: "aaa"}, {value: "bbb"}],
+						renderOptions: {
+							// IDecorationInstanceRenderOptions
+							light: {before: undefined, after: undefined},
+							dark: undefined,
+							// IThemeDecorationInstanceRenderOptions
+							before: undefined,
+							after: {
+								// IContentDecorationRenderOptions
+								contentText: 'foo',
+								contentIconPath: undefined,
+								// border: 'zzz',
+							},
+						},
+					}])
+				}, 1000)
+                // editor.setDecorationsFast()
+				// 'breakpoint'.match(/breakpoint/);
             });
         </script>
     </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
